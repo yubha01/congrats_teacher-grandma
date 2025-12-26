@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Congratulations Grandma 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom, #ffe6f0, #fff);
+  text-align: center;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  padding: 60px 20px;
+  animation: fadeIn 1.2s ease;
+}
+
+.slide.active {
+  display: block;
+}
+
+h1 {
+  color: #d63384;
+  font-size: 2.4em;
+}
+
+p {
+  font-size: 1.2em;
+  color: #555;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+button {
+  margin-top: 30px;
+  padding: 12px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background: #ff85b3;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff5fa2;
+}
+
+img {
+  max-width: 260px;
+  border-radius: 20px;
+  margin-top: 25px;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  width: 18px;
+  height: 18px;
+  background: pink;
+  border-radius: 50%;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(-800px);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rope photo section */
+.rope {
+  width: 90%;
+  height: 4px;
+  background: #c49a6c;
+  margin: 40px auto;
+  position: relative;
+}
+
+.photos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: -10px;
+}
+
+.clip {
+  position: relative;
+}
+
+.clip img {
+  width: 140px;
+  border-radius: 10px;
+  border: 4px solid white;
+  transform: rotate(-2deg);
+}
+
+.clip::before {
+  content: "📎";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide active">
+  <h1>🌸 A Beautiful New Chapter 🌸</h1>
+  <p>
+    Today brings a moment filled with joy, love,  
+    and a brand-new title to celebrate.
+  </p>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+  <h1>🎉 Congratulations! 🎉</h1>
+  <p>
+    Such wonderful news!  
+    Your family has been blessed with a precious new arrival.
+  </p>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide">
+  <h1>✨ Promoted to Grandma ✨</h1>
+  <img src="teacher.jpg" alt="Teacher photo">
+  <p>
+    A role filled with wisdom, warmth,  
+    and unconditional love.
+  </p>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- SLIDE 4: Memory Rope -->
+<div class="slide">
+  <h1>🌸 Little Moments, Big Love 🌸</h1>
+  <p>
+    Three moments.  
+    One heart overflowing with love.
+  </p>
+
+  <div class="rope"></div>
+
+  <div class="photos">
+    <div class="clip">
+      <img src="baby1.jpg" alt="Memory 1">
+    </div>
+    <div class="clip">
+      <img src="baby2.jpg" alt="Memory 2">
+    </div>
+    <div class="clip">
+      <img src="baby3.jpg" alt="Memory 3">
+    </div>
+  </div>
+
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+  <h1>🌷 Grandma Blessings 🌷</h1>
+  <p>
+    May your days be filled with tiny giggles,  
+    warm embraces, and love that grows stronger  
+    with every passing day.
+  </p>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide">
+  <h1>💖 From Teacher to Grandma 💖</h1>
+  <p>
+    You have guided so many students with patience and kindness.  
+    Now, your grandchild will grow up surrounded  
+    by the same beautiful love.
+  </p>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+  <h1>💌 With Love 💌</h1>
+  <p>
+    Wishing you endless joy in this new chapter of life.  
+    Congratulations once again.
+  </p>
+  <p><strong>— From [Your Name] 🌸</strong></p>
+</div>
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll(".slide");
+
+function nextSlide() {
+  slides[current].classList.remove("active");
+  current++;
+  if (current < slides.length) {
+    slides[current].classList.add("active");
+  }
+}
+
+/* create floating hearts */
+for (let i = 0; i < 15; i++) {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDelay = Math.random() * 8 + "s";
+  heart.style.animationDuration = 6 + Math.random() * 4 + "s";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
+
