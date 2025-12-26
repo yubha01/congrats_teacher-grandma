@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Congratulations Grandma 💖</title>
 
 <style>
@@ -10,26 +11,34 @@ body {
   font-family: "Segoe UI", sans-serif;
   background: linear-gradient(to bottom, #ffe6f0, #fff);
   text-align: center;
-  overflow: hidden;
 }
 
+/* SLIDE */
 .slide {
   display: none;
-  padding: 60px 20px;
+  min-height: 100svh; /* FIX mobile height */
+  padding: 40px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   animation: fadeIn 1.2s ease;
 }
 
 .slide.active {
-  display: block;
+  display: flex;
 }
 
 h1 {
   color: #d63384;
-  font-size: 2.4em;
+  font-size: 2.2em;
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #555;
   max-width: 600px;
   margin: 20px auto;
@@ -64,8 +73,9 @@ img {
   height: 18px;
   background: pink;
   border-radius: 50%;
-  animation: floatUp 8s linear infinite;
+  animation: floatUp linear infinite;
   opacity: 0.6;
+  pointer-events: none;
 }
 
 @keyframes floatUp {
@@ -74,7 +84,7 @@ img {
     opacity: 0.6;
   }
   to {
-    transform: translateY(-800px);
+    transform: translateY(-120vh);
     opacity: 0;
   }
 }
@@ -89,15 +99,14 @@ img {
   width: 90%;
   height: 4px;
   background: #c49a6c;
-  margin: 40px auto;
-  position: relative;
+  margin: 30px auto;
 }
 
 .photos {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: -10px;
+  flex-wrap: wrap; /* FIX mobile */
 }
 
 .clip {
@@ -124,91 +133,52 @@ img {
 
 <body>
 
-<!-- SLIDE 1 -->
 <div class="slide active">
   <h1>🌸 A Beautiful New Chapter 🌸</h1>
-  <p>
-    Today brings a moment filled with joy, love,  
-    and a brand-new title to celebrate.
-  </p>
+  <p>Today brings a moment filled with joy, love, and a brand-new title to celebrate.</p>
   <button onclick="nextSlide()">Next</button>
 </div>
 
-<!-- SLIDE 2 -->
 <div class="slide">
   <h1>🎉 Congratulations! 🎉</h1>
-  <p>
-    Such wonderful news!  
-    Your family has been blessed with a precious new arrival.
-  </p>
+  <p>Your family has been blessed with a precious new arrival.</p>
   <button onclick="nextSlide()">Next</button>
 </div>
 
-<!-- SLIDE 3 -->
 <div class="slide">
   <h1>✨ Promoted to Grandma ✨</h1>
-  <img src="teacher.jpg" alt="Teacher photo">
-  <p>
-    A role filled with wisdom, warmth,  
-    and unconditional love.
-  </p>
+  <img src="teacher.jpg">
+  <p>A role filled with wisdom, warmth, and unconditional love.</p>
   <button onclick="nextSlide()">Next</button>
 </div>
 
-<!-- SLIDE 4: Memory Rope -->
 <div class="slide">
   <h1>🌸 Little Moments, Big Love 🌸</h1>
-  <p>
-    Three moments.  
-    One heart overflowing with love.
-  </p>
-
+  <p>Three moments. One heart overflowing with love.</p>
   <div class="rope"></div>
-
   <div class="photos">
-    <div class="clip">
-      <img src="baby1.jpg" alt="Memory 1">
-    </div>
-    <div class="clip">
-      <img src="baby2.jpg" alt="Memory 2">
-    </div>
-    <div class="clip">
-      <img src="baby3.jpg" alt="Memory 3">
-    </div>
+    <div class="clip"><img src="baby1.jpg"></div>
+    <div class="clip"><img src="baby2.jpg"></div>
+    <div class="clip"><img src="baby3.jpg"></div>
   </div>
-
   <button onclick="nextSlide()">Next</button>
 </div>
 
-<!-- SLIDE 5 -->
 <div class="slide">
   <h1>🌷 Grandma Blessings 🌷</h1>
-  <p>
-    May your days be filled with tiny giggles,  
-    warm embraces, and love that grows stronger  
-    with every passing day.
-  </p>
+  <p>May your days be filled with giggles, warm embraces, and endless love.</p>
   <button onclick="nextSlide()">Next</button>
 </div>
 
-<!-- SLIDE 6 -->
 <div class="slide">
   <h1>💖 From Teacher to Grandma 💖</h1>
-  <p>
-    You have guided so many students with patience and kindness.  
-    Now, your grandchild will grow up surrounded  
-    by the same beautiful love.
-  </p>
+  <p>Your love and patience will now guide a new little heart.</p>
   <button onclick="nextSlide()">Next</button>
 </div>
 
-<!-- SLIDE 7 -->
 <div class="slide">
   <h1>💌 With Love 💌</h1>
-  <p>
-    Wishing you endless joy in this new chapter of life.  
-    Congratulations once again.
-  </p>
+  <p>Congratulations once again.</p>
   <p><strong>— From Yubha 🌸</strong></p>
 </div>
 
@@ -224,12 +194,10 @@ function nextSlide() {
   }
 }
 
-/* create floating hearts */
 for (let i = 0; i < 15; i++) {
   const heart = document.createElement("div");
   heart.className = "heart";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDelay = Math.random() * 8 + "s";
   heart.style.animationDuration = 6 + Math.random() * 4 + "s";
   document.body.appendChild(heart);
 }
