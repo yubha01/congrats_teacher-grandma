@@ -26,7 +26,6 @@ body {
   text-align: center;
 
   /* CENTER CONTENT */
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -145,7 +144,7 @@ img {
 
 <div class="slide">
   <h1>✨ Promoted to Grandma ✨</h1>
-  <img src="teacher.jpg">
+  <img src="teacher.jpg" alt="Teacher">
   <p>A role filled with wisdom and unconditional love.</p>
   <button onclick="nextSlide()">Next</button>
 </div>
@@ -154,9 +153,9 @@ img {
   <h1>🌸 Little Moments, Big Love 🌸</h1>
   <div class="rope"></div>
   <div class="photos">
-    <div class="clip"><img src="baby1.jpg"></div>
-    <div class="clip"><img src="baby2.jpg"></div>
-    <div class="clip"><img src="baby3.jpg"></div>
+    <div class="clip"><img src="baby1.jpg" alt="Baby photo 1"></div>
+    <div class="clip"><img src="baby2.jpg" alt="Baby photo 2"></div>
+    <div class="clip"><img src="baby3.jpg" alt="Baby photo 3"></div>
   </div>
   <button onclick="nextSlide()">Next</button>
 </div>
@@ -184,9 +183,9 @@ let current = 0;
 const slides = document.querySelectorAll(".slide");
 
 function nextSlide() {
-  slides[current].classList.remove("active");
-  current++;
-  if (current < slides.length) {
+  if (current < slides.length - 1) {
+    slides[current].classList.remove("active");
+    current++;
     slides[current].classList.add("active");
   }
 }
