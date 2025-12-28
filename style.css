@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom, #ffe6f0, #fff);
+  overflow: hidden;
+}
+
+/* SLIDES */
+.slide {
+  display: none;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeIn 0.8s ease;
+}
+
+.slide.active {
+  display: flex;
+}
+
+h1 {
+  color: #d63384;
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 1em;
+  color: #555;
+  max-width: 90%;
+  margin: 10px auto;
+}
+
+/* BUTTON */
+button {
+  margin-top: 25px;
+  padding: 12px 30px;
+  font-size: 15px;
+  border: none;
+  border-radius: 25px;
+  background: #ff85b3;
+  color: white;
+  cursor: pointer;
+}
+
+/* IMAGES */
+img {
+  max-width: 220px;
+  border-radius: 18px;
+  margin: 15px 0;
+}
+
+/* ROPE + PHOTOS */
+.rope {
+  width: 85%;
+  height: 4px;
+  background: #c49a6c;
+  margin: 25px 0 10px;
+}
+
+.photos {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.clip {
+  position: relative;
+}
+
+.clip img {
+  width: 100px;
+  border-radius: 10px;
+  border: 4px solid white;
+}
+
+.clip::before {
+  content: "📎";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* HEARTS */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  width: 14px;
+  height: 14px;
+  background: pink;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
